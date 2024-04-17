@@ -1,0 +1,80 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+
+body {
+    margin: 0;
+}
+
+nav {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+    background: linear-gradient(to top, #3C5BFC, #2b4bee);
+    color: #ffffff;
+}
+
+#logo {
+    text-decoration: none;
+    font-size: x-large;
+    margin-right: auto;
+    padding: 0 55px;
+}
+
+#login {
+    margin-left: auto;
+    padding-right: 55px;
+}
+
+#logout {
+    border: none;
+    background: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    font-size: large;
+}
+
+#logout-form {
+    margin-left: auto;
+    padding : 0 55px;
+}
+
+#register {
+    padding-right: 100px;
+}
+
+nav i {
+    padding-right: 5px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: large;
+    font-family: 'Poppins', sans-serif;
+}
+
+#register:hover,
+#login:hover,
+#logo:hover,
+#new:hover,
+#logout:hover {
+    cursor: pointer;
+    color: #d5daf1;
+}
+
+footer {
+    position: relative;
+    background: linear-gradient(to top, #3C5BFC, #2b4bee);
+    text-align: end;
+    padding: 1px 0;
+    margin-top: 350px;
+}
+
+footer p {
+    padding-right: 100px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}

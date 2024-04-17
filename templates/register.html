@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarTrader - Продажба на употребявани автомобили</title>
+    <link rel="stylesheet" href="/static/style/style.css" />
+  </head>
+  <body id="register-page" class="login-register">
+    <div class="main">
+      <h1 class="header-login-register" id="header-register">Регистрация</h1>
+      <form method="POST" id="login-form" action="{% url 'register' %}">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit" id="register-reg-button">Регистрация</button>
+      </form>
+    </div>
+    <script src="{% static 'js/hide-password-errors.js' %}"></script>
+  </body>
+</html>

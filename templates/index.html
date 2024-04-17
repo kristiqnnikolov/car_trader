@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarTrader - Продажба на употребявани автомобили</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'style/style.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="{% url 'index' %}" id="logo">CarTrader</a>
+      {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'logout' %}" id="logout-form">
+          {% csrf_token %}
+          {% if user_slug %}
+            <span><i class="fa-solid fa-user-check"></i><a href="{% url 'profile' user_slug=user_slug %}" id="login">Профил</a></span>
+          {% endif %}
+          <span><i class="fa-solid fa-arrow-right-from-bracket"></i><button type="submit" id="logout">Изход</button></span>
+        </form>
+      {% else %}
+        <span><i class="fa-solid fa-user-plus"></i><a href="{% url 'login' %}" id="login">Вход</a></span>
+      {% endif %}
+    </nav>
+    <header id="index-header">
+      <a href="{% url 'search' %}"><button id="index-search-button">Търсене на автомобили</button></a>
+      <h1 id="search-header">Последно качени автомобили</h1>
+    </header>
+    <main>
+      <article id="menus-container">
+        {% for ad in latest_ads %}
+        <a class="ad-index" href="{% url 'ad' pk=ad.pk %}">
+          <h3>{{ ad.brand }} {{ ad.model }} {{ ad.info }}</h3>
+          {% if ad.image %}
+            <p>
+              <img id="view-ad-image" src="{{ ad.image.url }}" alt="ad-image" style="width: 250px; height: 160px;" />
+            </p>
+          {% else %}
+            <img id="view-ad-image" src="{% static 'default_image.jpg' %}" alt="default_image" style="width: 250px; height: 160px;" />
+          {% endif %}
+          <h4 id="ad-price">{{ ad.price }} {{ ad.currency }}</h4>
+        </a>
+        {% endfor %}
+      </article>
+    </main>
+    <footer>
+      <p>2024 ® Copyright CarTrader</p>
+    </footer>
+    <!-- JS -->
+    <script src="{% static 'js/brand-model-change.js' %}"></script>
+  </body>
+</html>

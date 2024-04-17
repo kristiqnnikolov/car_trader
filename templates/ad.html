@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarTrader - Продажба на употребявани автомобили</title>
+    <link rel="stylesheet" href="/static/style/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="{% url 'index' %}" id="logo">CarTrader</a>
+      {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'logout' %}" id="logout-form">
+          {% csrf_token %}
+          {% if user_slug %}
+            <span><i class="fa-solid fa-user-check"></i><a href="{% url 'profile' user_slug=user_slug %}" id="login">Профил</a></span>
+          {% endif %}
+          <span><i class="fa-solid fa-arrow-right-from-bracket"></i><button type="submit" id="logout">Изход</button></span>
+        </form>
+      {% else %}
+        <span><i class="fa-solid fa-user-plus"></i><a href="{% url 'login' %}" id="login">Вход</a></span>
+      {% endif %}
+    </nav>
+    <main>
+      <article class="view-ad-holder">
+        <div id="view-ad-img-extras">
+          {% if ad.image %}
+            <img id="view-ad-image" src="{{ ad.image.url }}" alt="ad-image" />
+          {% else %}
+            <img  id="view-ad-image" src="{% static 'default_image.jpg' %}" alt="default_image" style="width: 250px; height: 160px;" />
+          {% endif %}
+          <h2 id="view-ad-holder-info-header">Описание</h2>
+          <div id="info2">{{ ad.description }}</div>
+        </div>
+        <div id="view-ad-info">
+          <span id="view-ad-holder">
+            <h1 id="view-ad-header">{{ ad.brand }} {{ ad.model }} {{ ad.info }}</h1>
+            <h1 id="view-ad-price">{{ ad.price }} {{ ad.currency }}</h1>
+          </span>
+          <span id="view-ad-holder-info">
+            <h2 id="view-ad-holder-info-header">Характеристики</h2>
+            <div id="view-ad-holder-info1-div">
+              <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>{{ ad.coupe_type }}</button>
+              <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>{{ ad.engine }} двигател</button>
+              <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>{{ ad.eurostandard }}</button>
+              <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>{{ ad.gearbox }} скоростна кутия</button>
+              <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>{{ ad.wheel }} волан</button>
+              <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Произведена през {{ ad.month_of_production }} {{ ad.year_of_production }}</button>
+              <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>{{ ad.color }}</button>
+              <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>{{ ad.doors }} врати</button>
+              <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>{{ ad.mileage }} км пробег</button>
+            </div>
+            <span id="view-ad-holder-info1">
+              <button disabled id="uploader-info"><i class="fa-solid fa-phone-volume"></i>{{ ad.user.phone_number }}</button>
+              <button disabled id="uploader-info"><i class="fa-solid fa-check"></i>{{ ad.user.region }}</button>
+              <button disabled id="uploader-info"><i class="fa-solid fa-check"></i>Публикувано от {{ ad.user }}</button>
+            </span>
+          </span>
+          {% if is_owner %}
+            <div class="button-container">
+              <button id="view-ad-price"><a href="{% url 'edit-ad' pk=ad.pk %}">Редактирай обява</a></button>
+            </div>
+          {% endif %}
+        </div>
+      </article>
+      <h2 id="ad-extras-header">Екстри</h2>
+      <article id="ad-extras">
+        {% if ad.ABS %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>ABS</button>
+        {% endif %}
+        {% if ad.airbags %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Airbags</button>
+        {% endif %}
+        {% if ad.traction_control %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Автоконтрол</button>
+        {% endif %}
+        {% if ad.adaptive_lights %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Адаптивни светлини</button>
+        {% endif %}
+        {% if ad.parking_sensor %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Парктроник</button>
+        {% endif %}
+        {% if ad.isofix %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Isofix</button>
+        {% endif %}
+        {% if ad.GPS %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>GPS</button>
+        {% endif %}
+        {% if ad.descent_control %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Система за контрол на спускането</button>
+        {% endif %}
+        {% if ad.gas_as_fuel %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Газова уредба</button>
+        {% endif %}
+        {% if ad.metan_as_fuel %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Метанова уредба</button>
+        {% endif %}
+        {% if ad.leasing %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Лизинг</button>
+        {% endif %}
+        {% if ad.fully_serviced %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Напълно обслужена</button>
+        {% endif %}
+        {% if ad.central_locking %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Централно заключване</button>
+        {% endif %}
+        {% if ad.velour_interior %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Велурен салон</button>
+        {% endif %}
+        {% if ad.el_mirrors %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Ел. Огледала</button>
+        {% endif %}
+        {% if ad.el_windows %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Ел. Стъкла</button>
+        {% endif %}
+        {% if ad.el_seats %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Ел. регулиране на седалките</button>
+        {% endif %}
+        {% if ad.el_wheel %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Отопление на волана</button>
+        {% endif %}
+        {% if ad.el_front_screen %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Подгрев на предното стъкло</button>
+        {% endif %}
+        {% if ad.LED_headlights %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>LED фарове</button>
+        {% endif %}
+        {% if ad.alloy_wheels %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Лети джанти</button>
+        {% endif %}
+        {% if ad.spoiler %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Спойлер</button>
+        {% endif %}
+        {% if ad.auto_start_stop_function %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Auto Start-Stop функция</button>
+        {% endif %}
+        {% if ad.bluetooth %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Bluetooth</button>
+        {% endif %}
+        {% if ad.steptronic_tiptronic %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Steptronic/Tiptronic</button>
+        {% endif %}
+        {% if ad.USB %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>USB</button>
+        {% endif %}
+        {% if ad.keyless %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Безключово палене</button>
+        {% endif %}
+        {% if ad.differential_lock %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Блокаж на диференциала</button>
+        {% endif %}
+        {% if ad.air_conditioning %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Климатик</button>
+        {% endif %}
+        {% if ad.climate_control %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Климатроник</button>
+        {% endif %}
+        {% if ad.board_cpu %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Бордкомпютър</button>
+        {% endif %}
+        {% if ad.multi_wheel %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Мултифункционален волан</button>
+        {% endif %}
+        {% if ad.navigation %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Навигация</button>
+        {% endif %}
+        {% if ad.four_by_four %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>4x4</button>
+        {% endif %}
+        {% if ad.seats_7 %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>7 местна</button>
+        {% endif %}
+        {% if ad.alarm %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Аларма</button>
+        {% endif %}
+        {% if ad.paid_casco %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Платено каско</button>
+        {% endif %}
+        {% if ad.paid_tax %}
+          <button disabled class="search-button" id="ad-info"><i class="fa-solid fa-check"></i>Платен данък</button>
+        {% endif %}
+      </article>
+    </main>
+    <footer id="profile-footer">
+      <p>2024 ® Copyright CarTrader</p>
+    </footer>
+  </body>
+</html>

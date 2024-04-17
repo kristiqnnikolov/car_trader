@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarTrader - Продажба на употребявани автомобили</title>
+    <link rel="stylesheet" href="/static/style/style.css" />
+
+    <body id="login-page" class="login-register">
+      <div class="main">
+        <h1 class="header-login-register" id="header-login">Вход</h1>
+          <form method="POST" id="login-form" action="{% url 'login' %}">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input id="login-button" type="submit" value="Вход" />
+          </form>
+          <p id="login-paragraph">
+            Нямаш регистрация? Регистрирай се сега!
+          </p>
+          <a id="register-a" href="{% url 'register' %}"><button id="register-reg-button">Регистрация</button></a>
+      </div>
+    </body>
+  </head>
+</html>

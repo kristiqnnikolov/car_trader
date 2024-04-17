@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarTrader - Продажба на употребявани автомобили</title>
+    <link rel="stylesheet" href="/static/style/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  </head>
+
+  <body>
+    <nav>
+      <a href="{% url 'index' %}" id="logo">CarTrader</a>
+    </nav>
+    <main>
+      <h1 id="ads-header">Вашите обяви</h1>
+      <section id="profile-holder">
+        <article class="main" id="profile-info">
+          <h1 id="info-header" for="chk">Вашата информация</h1>
+          <form method="GET" id="login-form">
+            <div class="profile-info-container">
+              <div id="form-email">
+                Имейл:<div>{{ user.email }}</div>
+              </div>
+              <div id="form-mobile">
+                Мобилен номер:<div>{{ user.phone_number }}</div>
+              </div>
+              <div id="form-region">
+                Регион:<div>{{ user.region }}</div>
+              </div>
+            </div>
+            {% csrf_token %}
+            <button type="submit" id="edit-btn"><a href="{% url 'profile-edit' %}">Редактирай</a></button>
+          </form>
+        </article>
+        <article id="ads-main">
+          <article id="ads-holder">
+            {% if user_ads %}
+              {% for ad in user_ads %}
+                <a class="ad" href="{% url 'ad' pk=ad.pk %}">
+                  <h2>{{ ad.brand }} {{ ad.model }} {{ ad.info }}</h2>
+                  {% if ad.image %}
+                    <p>
+                      <img id="view-ad-image" src="{{ ad.image.url }}" alt="ad-image" style="width: 250px; height: 160px;" />
+                    </p>
+                  {% else %}
+                    <img id="view-ad-image" src="{% static 'default_image.jpg' %}" alt="default_image" style="width: 250px; height: 160px;" />
+                  {% endif %}
+                  <h4 id="ad-price">{{ ad.price }} {{ ad.currency }}</h4>
+                </a>
+              {% endfor %}
+            {% else %}
+              <h1>Нямате активни обяви</h1>
+            {% endif %}
+          </article>
+          <button class="search-button" id="profile-button"><a href="{% url 'add-ad' user_slug=request.user.slug %}">Добави обява</a></button>
+        </article>
+      </section>
+    </main>
+    <footer id="profile-footer">
+      <p>2024 ® Copyright CarTrader</p>
+    </footer>
+  </body>
+</html>

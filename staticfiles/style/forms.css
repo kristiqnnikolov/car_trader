@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Franklin Gothic Medium';
+    font-style: italic;
+}
+
+#search-button:hover {
+    cursor: pointer;
+    color: #d5daf1;
+    background: #2b4bee;
+}
+
+#add-ad-btn {
+    font-size: 19px;
+    padding: 10px 40px;
+    font-family: 'Franklin Gothic Medium';
+    font-style: italic;
+}
+
+#add-ad-btn > a{
+    text-decoration: none;
+    color: white;
+}
+.button-container {
+    text-align: center;
+    width: 100%;
+}
+
+#upload-header {
+    margin: 5px;
+}
+
+#upload-holder {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+#upload-button {
+    justify-content: center;
+    color: white;
+    background: linear-gradient(to top, #3C5BFC, #2b4bee);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 20%;
+    margin: 5px;
+}
+
+#upload-description {
+    height: 200px;
+    width: 100%;
+}
+#upload-description > textarea{
+    padding: 5px 10px;
+    border-radius: 25px;
+    border: 5px solid rgba(139, 139, 139, .3);
+    color: #3C5BFC;
+    font-family: 'Franklin Gothic Medium';
+    font-style: italic;
+    font-size: 16px;
+}
+
+#search-header,
+#ads-header {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 0;
+}
+
+#search-form-headers-brand,
+#search-form-headers-model,
+#search-form-headers {
+    width: 180px;
+    height: 30px;
+    font-weight: 600;
+    border: 1.5px solid #171B29;
+}
+
+#brand-header {
+    align-self: center;
+}
+
+.letters {
+    background-color: #d4d4d4;
+    color: #171B29;
+}
+
+.price-power-from-input,
+.price-power-to-input {
+    padding: 6px;
+    border: 1px solid black;
+    max-width: 50px;
+    margin-right: 10px;
+}
+
+.search-button,
+#profile-button {
+    padding: 15px 154px;
+    background: linear-gradient(to top, #3C5BFC, #2b4bee);
+    color: white;
+    border-radius: 15px;
+    border: 1px solid white;
+}
+
+.search-button:hover {
+    box-shadow: 0px 6px 15px #0000ff61;
+}
+
+#checkbox {
+    margin: 5px;
+}
+
+.menu-container {
+    max-width: 250px;
+    width: 100%;
+    display: inline-table;
+    padding: 15px;
+}
+
+.menu-select-btn {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: linear-gradient(to top, #3C5BFC, #2b4bee);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-select-btn .menu-btn-text {
+    font-size: 17px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.menu-select-btn .menu-arrow-dwn {
+    display: flex;
+    height: 21px;
+    width: 21px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 50%;
+    background: #6e93f7;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.menu-select-btn.open .menu-arrow-dwn {
+    transform: rotate(-180deg);
+}
+
+.menu-list-items {
+    position: relative;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    margin-top: -7px;
+    width: 246px;
+    border: 2px solid #3C5BFC;
+    padding-inline-start: 0px;
+}
+
+.menu-select-btn.open~.menu-list-items {
+    display: block;
+}
+
+.menu-list-items .menu-item {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 21px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.menu-list-items .menu-item:hover {
+    background-color: #e7edfe;
+}
+
+.menu-item .menu-item-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+
+}
+
+.menu-item .menu-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 18px;
+    width: 18px;
+    border-radius: 4px;
+    margin-right: 12px;
+    border: 1.5px solid #c0c0c0;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-item.checked .menu-checkbox {
+    background-color: #4070f4;
+    border-color: linear-gradient(to top, #3C5BFC, #2b4bee);
+}
+
+.menu-checkbox .menu-check-icon {
+    color: #fff;
+    transform: scale(0);
+    transition: all 0.2s ease-in-out;
+}
+
+.menu-item.checked .menu-check-icon {
+    transform: scale(1);
+}

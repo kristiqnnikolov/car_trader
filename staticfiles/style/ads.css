@@ -1,0 +1,262 @@
+.ad {
+    flex: 1 0 50%;
+    max-width: 33%;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: rgb(104, 104, 104);
+}
+
+.search-ad {
+    padding: 5px;
+    border-radius: 5px;
+    width: 250px;
+}
+
+#search-button-ad {
+    padding: 15px;
+    border-radius: 5px;
+    width: 200px;
+    margin: 25px 40px;
+    background-color: #3C5BFC;
+    color: white;
+    font-family: 'Franklin Gothic Medium';
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.search-ad-div {
+    margin: 15px;
+    width: 250px;
+}
+
+.ad-index {
+    flex: 1 0 50%;
+    max-width: 18%;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: black;
+    margin: 0 15px;
+}
+
+#ad-price {
+    position: relative;
+    border-radius: 5px;
+    background-color: #3C5BFC;
+    padding: 5px;
+    color: white;
+    top: -62%;
+    right: -44%;
+    display: inline;
+}
+
+.view-ad-holder {
+    margin: 50px 200px 50px 100px;
+    display: flex;
+    width: 100%;
+}
+
+
+#view-ad-image {
+    border-radius: 5px;
+    width: 600px;
+    height: 350px;
+    box-shadow: 0px 1px 15px 3px grey;
+}
+
+#view-ad-holder {
+    margin: 0;
+    color: black;
+    padding: 0px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#view-ad-price {
+    font-size: 19px;
+    padding: 10px 10px;
+    font-family: 'Franklin Gothic Medium';
+    font-style: italic;
+    background-color: green;
+    color: white;
+    border-radius: 15px;
+    border: 1px solid white;
+}
+
+#view-ad-holder-info {
+    margin: 0;
+    color: white;
+    padding: 0px 10px;
+}
+
+#view-ad-holder-info1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 5px;
+
+}
+
+#view-ad-holder-info1-div {
+    width: 100%;
+}
+
+#view-ad-holder-info0 {
+    display: flex;
+}
+
+#info2 {
+    color: #3C5BFC;
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px 2px grey;
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    font-size: 18px;
+    width: 600px;
+    margin: 5px 0px;
+    height: auto;
+}
+
+#view-ad-holder-info-header {
+    text-align: center;
+    color: grey;
+    margin: 10px 90px;
+}
+
+#view-ad-header {
+    margin: 15px 0;
+}
+
+#view-ad-info1-uploaded-by {
+    color: #3C5BFC;
+}
+
+#ad-extras-header {
+    text-align: center;
+    color: grey;
+    margin: 10px 90px;
+}
+
+#view-ad-info {
+    width: 48%;
+    margin: 0 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 15px 3px grey;
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    font-size: 16px;
+}
+
+#view-ad-info>p {
+    color: gray;
+    font-size: large;
+    margin: 0;
+    padding: 0 10px;
+}
+
+.view-ad-info-p {
+    background: linear-gradient(to top, #3C5BFC, #2b4bee);
+    border: 2px solid grey;
+    border-radius: 15px;
+}
+
+#ads-index {
+    max-width: 19%;
+    margin: 0 7px;
+}
+
+#add-ad-header {
+    margin: 5px 0;
+    text-align: center;
+}
+
+#ad-extras {
+    width: 1500px;
+    text-align: center;
+}
+
+#ad-info {
+    font-size: 19px;
+    padding: 10px 10px;
+    font-family: 'Franklin Gothic Medium';
+    font-style: italic;
+}
+
+#uploader-info {
+    font-size: 19px;
+    padding: 10px 10px;
+    font-family: 'Franklin Gothic Medium';
+    font-style: italic;
+    background-color: red;
+    color: white;
+    border-radius: 15px;
+    border: 1px solid white;
+}
+
+#ad-info>i,
+#uploader-info>i {
+    padding: 0 7px;
+}
+
+#view-ad-price>a {
+    text-decoration: none;
+    color: white;
+}
+
+.form-group {
+    width: 100%;
+}
+
+#model-holder,
+#brand-holder {
+    width: 100%;
+}
+
+main form {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+#main h1 {
+    text-align: center;
+}
+
+#id_price,
+#id_mileage,
+#id_info {
+    padding: 5px 10px;
+    border-radius: 25px;
+    border: 2px solid rgba(139, 139, 139, .3);
+    color: #3C5BFC;
+    font-family: 'Franklin Gothic Medium';
+    font-style: italic;
+    font-size: 16px;
+}
+
+/* -------- Radio styles for one choice menu ------------ */
+
+ul.ks-cboxtags li input[type="radio"]:checked+label::before {
+    content: "\f00c";
+    transform: rotate(-360deg);
+    transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="radio"]:checked+label {
+    border: 2px solid linear-gradient(to top, #3C5BFC, #2b4bee);
+    background: linear-gradient(to top, #3C5BFC, #2b4bee);
+    color: #fff;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li input[type="radio"] {
+    display: absolute;
+}
+
+ul.ks-cboxtags li input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+ul.ks-cboxtags li input[type="radio"]:focus+label {
+    border: 2px solid white;
+}

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarTrader - Продажба на употребявани автомобили</title>
+    <link rel="stylesheet" href="{% static 'style/style.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="{% url 'index' %}" id="logo">CarTrader</a>
+      <span><i class="fa-solid fa-arrow-right-from-bracket"></i><a href="{% url 'logout' %}" id="login">Изход</a></span>
+    </nav>
+    <h2 id="add-ad-header">Характеристики на автомобила</h2>
+    <main>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group" id="brand-holder">
+          <h2 id="brand-header">Марка</h2>
+          {% if form.errors.brand %}
+            {{ form.errors.brand }}
+          {% endif %}
+          <ul class="ks-cboxtags" id="brand-list">
+            {% for value, label in form.brand.field.choices %}
+              <li>
+                <input type="radio" id="brand_{{ value }}" name="brand" value="{{ value }}" />
+                <label for="brand_{{ value }}">{{ label }}</label>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="form-group" id="model-holder">
+          <h2 id="model-header">Модел</h2>
+          {% if form.errors.model %}
+            {{ form.errors.model }}
+          {% endif %}
+          <ul class="ks-cboxtags" id="model-list"></ul>
+        </div>
+        <div class="form-group">
+          <h2 id="extras-header">Допълнителна информация</h2>
+          <p>Информацията ще се вижда след марка и модел</p>
+          <p id="info-message">Пример : BMW 3 серия 320</p>
+          <ul class="ks-cboxtags">
+            <li>{{ form.info }}</li>
+          </ul>
+        </div>
+        <div class="form-group">
+          <h2 id="extras-header">Пробег в км</h2>
+          {% if form.errors.mileage %}
+            {{ form.errors.mileage }}
+          {% endif %}
+          <ul class="ks-cboxtags">
+            <li>{{ form.mileage }}</li>
+          </ul>
+        </div>
+        <div class="form-group">
+          <h2 id="extras-header">Цена</h2>
+          {% if form.errors.currency %}
+            {{ form.errors.currency }}
+          {% endif %}
+          <ul class="ks-cboxtags">
+            <li>{{ form.price }}</li>
+            {% for value, label in form.currency.field.choices %}
+              <li>
+                <input type="radio" id="currency_{{ value }}" name="currency" value="{{ value }}" />
+                <label for="currency_{{ value }}">{{ label }}</label>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="form-group">
+          <h2 id="extras-header">Двигател</h2>
+          {% if form.errors.engine %}
+            {{ form.errors.engine }}
+          {% endif %}
+          <ul class="ks-cboxtags">
+            {% for value, label in form.engine.field.choices %}
+              <li>
+                <input type="radio" id="engine_{{ value }}" name="engine" value="{{ value }}" />
+                <label for="engine_{{ value }}">{{ label }}</label>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="form-group">
+          <h2 id="extras-header">Тип купе</h2>
+          {% if form.errors.coupe_type %}
+            {{ form.errors.coupe_type }}
+          {% endif %}
+          <ul class="ks-cboxtags">
+            {% for value, label in form.coupe_type.field.choices %}
+              <li>
+                <input type="radio" id="coupe_type_{{ value }}" name="coupe_type" value="{{ value }}" />
+                <label for="coupe_type_{{ value }}">{{ label }}</label>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="form-group">
+          <h2 id="extras-header">Евростандарт</h2>
+          {% if form.errors.eurostandard %}
+            {{ form.errors.eurostandard }}
+          {% endif %}
+          <ul class="ks-cboxtags">
+            {% for value, label in form.eurostandard.field.choices %}
+              <li>
+                <input type="radio" id="eurostandard_{{ value }}" name="eurostandard" value="{{ value }}" />
+                <label for="eurostandard_{{ value }}">{{ label }}</label>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="form-group">
+          <h2 id="extras-header">Волан</h2>
+          {% if form.errors.wheel %}
+            {{ form.errors.wheel }}
+          {% endif %}
+          <ul class="ks-cboxtags">
+            {% for value, label in form.wheel.field.choices %}
+              <li>
+                <input type="radio" id="wheel_{{ value }}" name="wheel" value="{{ value }}" />
+                <label for="wheel_{{ value }}">{{ label }}</label>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="form-group">
+          <h2 id="extras-header">Скоростна кутия</h2>
+          {% if form.errors.gearbox %}
+            {{ form.errors.gearbox }}
+          {% endif %}
+          <ul class="ks-cboxtags">
+            {% for value, label in form.gearbox.field.choices %}
+              <li>
+                <input type="radio" id="gearbox_{{ value }}" name="gearbox" value="{{ value }}" />
+                <label for="gearbox_{{ value }}">{{ label }}</label>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="form-group">
+          <h2 id="extras-header">Врати</h2>
+          {% if form.errors.doors %}
+            {{ form.errors.doors }}
+          {% endif %}
+          <ul class="ks-cboxtags">
+            {% for value, label in form.doors.field.choices %}
+              <li>
+                <input type="radio" id="doors_{{ value }}" name="doors" value="{{ value }}" />
+                <label for="doors_{{ value }}">{{ label }}</label>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="form-group">
+          <h2 id="extras-header">Цвят</h2>
+          {% if form.errors.color %}
+            {{ form.errors.color }}
+          {% endif %}
+          <ul class="ks-cboxtags">
+            {% for value, label in form.color.field.choices %}
+              <li>
+                <input type="radio" id="color_{{ value }}" name="color" value="{{ value }}" />
+                <label for="color_{{ value }}">{{ label }}</label>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="form-group">
+          <h2 id="extras-header">Месец и година на производство</h2>
+          {% if form.errors.year_of_production %}
+            {{ form.errors.year_of_production }}
+          {% endif %}
+          <ul class="ks-cboxtags">
+            {% for value, label in form.month_of_production.field.choices %}
+              <li>
+                <input type="radio" id="month_of_production_{{ value }}" name="month_of_production" value="{{ value }}" />
+                <label for="month_of_production_{{ value }}">{{ label }}</label>
+              </li>
+            {% endfor %}
+          </ul>
+          <ul class="ks-cboxtags">
+            {% for value, label in form.year_of_production.field.choices %}
+              <li>
+                <input type="radio" id="year_of_production_{{ value }}" name="year_of_production" value="{{ value }}" />
+                <label for="year_of_production_{{ value }}">{{ label }}</label>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="form-group">
+          <h2 id="extras-header">Регион</h2>
+          {% if form.errors.region %}
+            {{ form.errors.region }}
+          {% endif %}
+          <ul class="ks-cboxtags">
+            {% for value, label in form.region.field.choices %}
+              <li>
+                <input type="radio" id="region_{{ value }}" name="region" value="{{ value }}" />
+                <label for="region_{{ value }}">{{ label }}</label>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="form-group">
+          <h2 id="extras-header">Екстри</h2>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.ABS }}
+              <label for="id_ABS">{{ form.ABS.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.airbags }}
+              <label for="id_airbags">{{ form.airbags.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.traction_control }}
+              <label for="id_traction_control">{{ form.traction_control.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.adaptive_lights }}
+              <label for="id_adaptive_lights">{{ form.adaptive_lights.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.parking_sensor }}
+              <label for="id_parking_sensor">{{ form.parking_sensor.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.isofix }}
+              <label for="id_isofix">{{ form.isofix.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.GPS }}
+              <label for="id_GPS">{{ form.GPS.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.descent_control }}
+              <label for="id_descent_control">{{ form.descent_control.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.gas_as_fuel }}
+              <label for="id_gas_as_fuel">{{ form.gas_as_fuel.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.metan_as_fuel }}
+              <label for="id_metan_as_fuel">{{ form.metan_as_fuel.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.leasing }}
+              <label for="id_leasing">{{ form.leasing.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.fully_serviced }}
+              <label for="id_fully_serviced">{{ form.fully_serviced.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.central_locking }}
+              <label for="id_central_locking">{{ form.central_locking.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.velour_interior }}
+              <label for="id_velour_interior">{{ form.velour_interior.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.el_mirrors }}
+              <label for="id_el_mirrors">{{ form.el_mirrors.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.el_windows }}
+              <label for="id_el_windows">{{ form.el_windows.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.el_seats }}
+              <label for="id_el_seats">{{ form.el_seats.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.el_wheel }}
+              <label for="id_el_wheel">{{ form.el_wheel.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.el_front_screen }}
+              <label for="id_el_front_screen">{{ form.el_front_screen.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.LED_headlights }}
+              <label for="id_LED_headlights">{{ form.LED_headlights.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.alloy_wheels }}
+              <label for="id_alloy_wheels">{{ form.alloy_wheels.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.spoiler }}
+              <label for="id_spoiler">{{ form.spoiler.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.auto_start_stop_funtion }}
+              <label for="id_auto_start_stop_funtion">{{ form.auto_start_stop_funtion.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.bluetooth }}
+              <label for="id_bluetooth">{{ form.bluetooth.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.steptronic_tiptronic }}
+              <label for="id_steptronic_tiptronic">{{ form.steptronic_tiptronic.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.USB }}
+              <label for="id_USB">{{ form.USB.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.keyless }}
+              <label for="id_keyless">{{ form.keyless.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.differential_lock }}
+              <label for="id_differential_lock">{{ form.differential_lock.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.air_conditioning }}
+              <label for="id_air_conditioning">{{ form.air_conditioning.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.climate_control }}
+              <label for="id_climate_control">{{ form.climate_control.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.board_cpu }}
+              <label for="id_board_cpu">{{ form.board_cpu.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.multi_wheel }}
+              <label for="id_multi_wheel">{{ form.multi_wheel.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.navigation }}
+              <label for="id_navigation">{{ form.navigation.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.four_by_four }}
+              <label for="id_four_by_four">{{ form.four_by_four.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.seats_7 }}
+              <label for="id_seats_7">{{ form.seats_7.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.alarm }}
+              <label for="id_alarm">{{ form.alarm.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.paid_casco }}
+              <label for="id_paid_casco">{{ form.paid_casco.label }}</label>
+            </li>
+          </ul>
+          <ul class="ks-cboxtags">
+            <li>
+              {{ form.paid_tax }}
+              <label for="id_paid_tax">{{ form.paid_tax.label }}</label>
+            </li>
+          </ul>
+        </div>
+        <div class="form-group" id="upload-holder">
+          <h3 id="upload-header">Снимки:</h3>
+          <button id="upload-button"><input type="file" name="image" accept="image/*" /></button>
+        </div>
+        <div id="upload-description">
+          {{form.description}}
+        </div>
+        <div class="button-container">
+          <button class="search-button" id="add-ad-btn">Добави обява</button>
+        </div>
+      </form>
+    </main>
+    <footer id="profile-footer">
+      <p>2024 ® Copyright CarTrader</p>
+    </footer>
+    <script src="{% static 'js/brand-model-change.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarTrader - Продажба на употребявани автомобили</title>
+    <link rel="stylesheet" href="/static/style/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  </head>
+
+  <body>
+    <nav>
+      <a href="{% url 'index' %}" id="logo">CarTrader</a>
+    </nav>
+    <main>
+      <div class="main" id="profile-info">
+        <h1 id="info-header" for="chk">Вашата информация</h1>
+        <div class="alert alert-danger" role="alert">{{ message }}</div>
+        <form method="post" action="{% url 'profile-edit' %}" id="login-form">
+          <div class="profile-info-container">
+            <div id="form-email">
+              Имейл:<div>{{ user.email }}</div>
+            </div>
+            <div id="form-mobile">
+              Мобилен номер:<div>{{ form.phone_number }}</div>
+            </div>
+            <div id="form-region">
+              Регион:<div>{{ form.region }}</div>
+            </div>
+          </div>
+          {% csrf_token %}
+          <button type="submit" id="edit-btn">Запази</button>
+        </form>
+      </div>
+    </main>
+    <footer id="profile-footer">
+      <p>2024 ® Copyright CarTrader</p>
+    </footer>
+  </body>
+</html>

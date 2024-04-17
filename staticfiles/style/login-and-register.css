@@ -1,0 +1,142 @@
+.login-register {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+.header-login-register,
+#login-paragraph {
+    color: #fff;
+    font-style: italic;
+    padding: 10px 0;
+}
+
+.login-register::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+#login-page {
+    background-image: url('../images/background-login.jpg');
+}
+
+#register-page {
+    background-image: url('../images/background-register.jpg');
+}
+
+.main {
+    text-align: center;
+    width: 400px;
+    height: 550px;
+    justify-content: center;
+    background: linear-gradient(to top, #3C5BFC, #2b4bee);
+    border-radius: 10px;
+    box-shadow: 5px 10px 50px #000;
+    margin-right: 1000px;
+}
+
+#login-form p input {
+    height: 30px;
+    border-radius: 8px;
+    border: none;
+}
+
+#login-form p input:focus {
+    outline: none;
+    border: 1px solid white;
+}
+
+/* <------- Edit and save buttons are to profile page --------> */
+#register-reg-button,
+#login-button,
+#edit-btn,
+#save-btn {
+    width: 60%;
+    height: 40px;
+    margin: auto;
+    justify-content: center;
+    color: #fff;
+    background: linear-gradient(to top, #3C5BFC, #2b4bee);
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 15px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#login-button:hover,
+#register-reg-button:hover {
+    box-shadow: 0px 0px 8px 2px white;
+    background: #3e5cf3;
+}
+
+#edit-btn a {
+    text-decoration: none;
+    color: white;
+}
+
+#edit-btn:hover {
+    box-shadow: 0px 0px 8px 2px white;
+    background: #3e5cf3;
+}
+
+/* <------- Edit and save buttons are to profile page --------> */
+
+#register-a {
+    text-decoration: none;
+
+}
+
+
+
+button:hover {
+    background: #3e5cf3;
+}
+
+
+/* ! ! ! ERROR MESSAGE ! ! ! */
+/* " Грешно потребителско име или парола. " */
+.errorlist {
+    list-style: none;
+    color: rgb(255, 81, 0);
+    padding: 0 5px;
+    margin: 0;
+}
+
+/* -------------Info message-------------- */
+#info-message {
+    color: red;
+}
+
+/* !!! HELP TEXT !!! */
+#id_password1_helptext {
+    color: white;
+    display: inline-block;
+    width: 230px;
+    padding: 10px 0;
+}
+
+/* WebKit browsers */
+::-webkit-input-placeholder {
+    color: #3e5cf3;
+    font-style: italic;
+    font-weight: 600;
+}
