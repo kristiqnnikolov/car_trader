@@ -56,7 +56,7 @@ DATABASES = {
         "NAME": "car_trader_db",
         "USER": "postgres",
         "PASSWORD": "password",
-        "HOST": "localhost",
+        "HOST": "dpg-cohoqv5jm4es739chtmg-a",
         "PORT": "5432",
     }
 }
