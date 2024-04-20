@@ -54,8 +54,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "car_trader_db",
-        "USER": "postgres",
-        "PASSWORD": "password",
+        "USER": "car_trader_db_user",
+        "PASSWORD": "a8WVjUbvWDlxzuYLNBglGztmGmmQpLBM",
         "HOST": "dpg-cohoqv5jm4es739chtmg-a",
         "PORT": "5432",
     }
