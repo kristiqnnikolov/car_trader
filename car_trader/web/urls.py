@@ -12,9 +12,6 @@ from .views import (
     SearchView,
     ViewAd,
 )
-from .views import error_404_view
-
-handler404 = 'car_trader.web.views.error_404_view'
 
 urlpatterns = [
     path("", IndexView.as_view(), name="index"),

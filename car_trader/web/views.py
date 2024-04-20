@@ -212,7 +212,3 @@ class ViewAd(DetailView):
         ad = self.get_object()
         context["is_owner"] = ad.user == self.request.user
         return context
-
-
-def error_404_view(request, exception):
-    return render(request, "404.html", status=404)
