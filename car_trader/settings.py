@@ -17,7 +17,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "car_trader.web",
+    
+    "car_trader.user_profile",
+    "car_trader.ads",
 ]
 
 MIDDLEWARE = [
@@ -92,7 +94,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_URL = reverse_lazy("login")
 LOGOUT_REDIRECT_URL = reverse_lazy("index")
 
-AUTH_USER_MODEL = "web.CustomUser"
+AUTH_USER_MODEL = "user_profile.CustomUser"
 
 
 MEDIA_URL = '/media/'

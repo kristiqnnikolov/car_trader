@@ -223,7 +223,8 @@ main form {
 
 #id_price,
 #id_mileage,
-#id_info {
+#id_info,
+#id_horsepower {
     padding: 5px 10px;
     border-radius: 25px;
     border: 2px solid rgba(139, 139, 139, .3);

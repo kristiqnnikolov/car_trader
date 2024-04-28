@@ -57,6 +57,15 @@
           </ul>
         </div>
         <div class="form-group">
+          <h2 id="extras-header">к.с.</h2>
+          {% if form.errors.horsepower %}
+            {{ form.errors.horsepower }}
+          {% endif %}
+          <ul class="ks-cboxtags">
+            <li>{{ form.horsepower }}</li>
+          </ul>
+        </div>
+        <div class="form-group">
           <h2 id="extras-header">Цена</h2>
           {% if form.errors.currency %}
             {{ form.errors.currency }}
