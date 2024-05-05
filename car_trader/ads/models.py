@@ -53,7 +53,7 @@ class Ad(models.Model):
 
     description = models.TextField(default="Въведете описание")
     engine = models.CharField(choices=ENGINE_CHOICES, default=ENGINE_CHOICES[0][0])
-    price = MyCustomIntegerField()
+    price = MyCustomIntegerField(blank=True, null=True)
     mileage = MyCustomIntegerField(blank=True, null=True)
     horsepower = MyCustomIntegerField(default="100")
 
